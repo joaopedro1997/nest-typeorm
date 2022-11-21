@@ -1,0 +1,30 @@
+version: '3'
+volumes:
+  db-data-nest:
+services:
+  db:
+    container_name: db_local_nest
+    restart: always
+    build: ./.docker/local/db
+    volumes:
+      - db-data-nest:/var/lib/mysql
+    ports:
+      - '3306:3306'
+  phpmyadmin_nest:
+    container_name: phpmyadmin_dev_nest
+    image: phpmyadmin/phpmyadmin:latest
+    links:
+      - db
+    ports:
+      - 8002:80
+    environment:
+      - PMA_ARBITRARY=1
+      - UPLOAD_LIMIT=500000000
+  app:
+    build: ./.docker/local/nest
+    entrypoint: ./.docker/local/entrypoint.sh
+    container_name: nest_api
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/home/node/app

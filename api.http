@@ -1,0 +1,56 @@
+### LIST PRODUCTS
+GET http://localhost:3000/products
+Content-type: application/json
+
+### CREATE PRODUCT
+POST http://localhost:3000/products
+Content-type: application/json
+
+{
+    "name": "TESTE 2",
+    "price": {{$randomInt}}
+    
+}
+
+
+### UPDATE PRODUCT
+PATCH  http://localhost:3000/products/1
+Content-type: application/json
+
+{
+    "name": "",
+    "price": {{$randomInt}}
+}
+
+### DELETE PRODUCT
+DELETE  http://localhost:3000/products/27
+Content-type: application/json
+
+### API OK
+GET http://localhost:3000/products/teste-api
+Origin: 127.0.0.1
+Content-type: application/json
+
+### FIND PRODUCT
+GET http://localhost:3000/products/15
+Content-type: application/json
+
+### LOGIN
+POST http://localhost:3000/api/auth/login
+Content-type: application/json
+
+{
+    "email": "joao@teste.com",
+    "password": "1234561"
+}
+
+
+### CREATE USER
+POST http://localhost:3000/users
+Content-type: application/json
+
+{
+  "name": "João Pedro",
+  "email": "joao@teste.com",
+  "password": "123456"
+}
